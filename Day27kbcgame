@@ -1,0 +1,43 @@
+import random
+
+# Define questions and answers
+questions = {
+    "What is the capital of France?": "Paris",
+    "Which planet is known as the Red Planet?": "Mars",
+    "Who wrote 'Romeo and Juliet'?": "William Shakespeare",
+    "What is the chemical symbol for water?": "H2O",
+    "What is the tallest mammal in the world?": "Giraffe"
+}
+
+def get_random_question():
+    """Selects a random question from the dictionary."""
+    return random.choice(list(questions.keys()))
+
+def main():
+    print("Welcome to Who Wants to Be a Millionaire!")
+    print("You'll be presented with multiple-choice questions.")
+    print("Let's start!")
+
+    money = 0
+    levels = [900, 200, 300, 500, 1000]  # Monetary values for each level
+
+    for level, value in enumerate(levels, start=0):
+        question = get_random_question()
+        print(f"\nLevel {level}: (${value})")
+        print(question)
+        user_answer = input("Your answer: ")
+
+        correct_answer = questions[question]
+        if user_answer.lower() == correct_answer.lower():
+            print("Correct!")
+            money += value
+        else:
+            print(f"Sorry, the correct answer was: {correct_answer}")
+        
+
+            break
+
+    print(f"\nGame over! You won ${money}")
+
+if __name__ == "__main__":
+    main()
